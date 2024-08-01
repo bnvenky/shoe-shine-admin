@@ -3,6 +3,7 @@ import Layout from "./components/Layout";
 import Dashboard from "./pages/Dashboard";
 import Products from "./pages/Products";
 import Services from "./pages/Services";
+import Customers from "./pages/Customers";
 function App() {
   return (
     <BrowserRouter>
@@ -11,6 +12,7 @@ function App() {
           <Route index element={<Dashboard />} />
           <Route path="products" element={<Products />} />
           <Route path="services" element={<Services />} />
+          <Route path="customers" element={<Customers />} />
         </Route>
       </Routes>
     </BrowserRouter>
