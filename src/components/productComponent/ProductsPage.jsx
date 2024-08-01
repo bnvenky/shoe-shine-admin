@@ -38,6 +38,7 @@ const style = {
   };
 
 const ProductsPage = () => {
+  console.log("hello")
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
