@@ -7,6 +7,9 @@ import { LuBox, LuMessageSquare } from "react-icons/lu";
 import { AiOutlineProduct } from "react-icons/ai";
 import { AiOutlineCustomerService } from "react-icons/ai";
 import { MdOutlineMiscellaneousServices } from "react-icons/md";
+import { FaOpencart } from "react-icons/fa";
+import { GrTransaction } from "react-icons/gr";
+
 // ICONS //
 
 const Sidebar = () => {
@@ -16,9 +19,11 @@ const Sidebar = () => {
   const SIDEBAR_LINKS = [
     { id: 1, path: "/", name: "Dashboard", icon: LuBox },
     { id: 2, path: "/products", name: "Products", icon: AiOutlineProduct },
-    { id: 3, path: "/customers", name: "Customers", icon: AiOutlineCustomerService },
-    { id: 4, path: "/services", name: "Services", icon: MdOutlineMiscellaneousServices },
-    { id: 6, path: "/messages", name: "Messages", icon: LuMessageSquare },
+    { id: 3, path: "/orders", name: "Orders", icon: FaOpencart },
+    { id: 4, path: "/transactions", name: "Transactions", icon: GrTransaction },
+    { id: 5, path: "/customers", name: "Customers", icon: AiOutlineCustomerService },
+    { id: 6, path: "/services", name: "Services", icon: MdOutlineMiscellaneousServices },
+    { id: 7, path: "/messages", name: "Messages", icon: LuMessageSquare },
   ];
 
   useEffect(() => {
