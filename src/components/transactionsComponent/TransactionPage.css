@@ -1,0 +1,134 @@
+.transactions-page {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f5f7fa;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.search-bar {
+    padding: 8px;
+    width: 200px;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.content {
+    display: flex;
+}
+
+.table-section {
+    flex: 2;
+    margin-right: 20px;
+}
+
+.details-section {
+    flex: 1;
+    border-left: 1px solid #ddd;
+    padding-left: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.transactions-table {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.transactions-table h2 {
+    margin-bottom: 20px;
+    color: #1f2937;
+}
+
+.table-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.table-controls input,
+.table-controls select,
+.table-controls button {
+    padding: 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: #f1f5f9;
+}
+
+th,
+td {
+    padding: 10px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+    text-align: left;
+    color: #6b7280;
+}
+
+td {
+    color: #374151;
+}
+
+.view-button {
+    padding: 5px 10px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.transaction-details {
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-details h2 {
+    margin-bottom: 20px;
+    color: #1f2937;
+}
+
+.transaction-details p {
+    margin-bottom: 10px;
+    color: #4b5563;
+}
+
+.create-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}

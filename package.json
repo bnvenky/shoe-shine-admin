@@ -16,6 +16,7 @@
     "@mui/icons-material": "^5.16.5",
     "@mui/material": "^5.16.5",
     "antd": "^5.19.3",
+    "bootstrap": "^5.3.3",
     "chart.js": "^4.4.3",
     "material-ui-popup-state": "^5.1.2",
     "react": "^18.3.1",
