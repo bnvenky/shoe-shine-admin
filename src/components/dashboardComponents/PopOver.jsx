@@ -8,6 +8,10 @@ import { Link } from 'react-router-dom';
 import { Box } from '@mui/material';
 
 export default function PopoverPopupState() {
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    window.location.href = '/login'; // Redirect to login page
+  };
   return (
     <PopupState variant="popover" popupId="demo-popup-popover">
       {(popupState) => (
@@ -34,7 +38,7 @@ export default function PopoverPopupState() {
             <Box sx={{ p: 3 }}>
             <Typography sx={{ p: 2 }}><Link to="/profile">Profile</Link></Typography>
             <Typography sx={{ p: 2 }}><Link to="/settings">Settings</Link></Typography>
-            <Button sx={{backgroundColor:'yellow'}}>Log Out</Button>
+            <Button sx={{backgroundColor:'yellow'}} onClick={handleLogout}>Log Out</Button>
             </Box>
             </center>
           </Popover>
