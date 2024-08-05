@@ -36,17 +36,17 @@ function OrdersComponent() {
 
   return (
     <div className="orders-container">
-      <h2>Orders Overview</h2>
-      <div className="cards-container">
-        <div className="card">
+      <h1 className='text-black'>Orders Overview</h1>
+      <div className="cards-container mt-2">
+        <div className="cards">
           <h3>Total Sales</h3>
           <p>${mockData.totalSales}</p>
         </div>
-        <div className="card">
+        <div className="cards">
           <h3>Total Orders</h3>
           <p>{mockData.totalOrders}</p>
         </div>
-        <div className="card">
+        <div className="cards">
           <h3>Total Products</h3>
           <p>{mockData.totalProducts}</p>
         </div>
