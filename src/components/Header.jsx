@@ -3,7 +3,7 @@ import PopoverPopupState from "./dashboardComponents/PopOver";
 
 const Header = () => {
   return (
-    <div className="flex justify-between items-center bg-custom-gray p-4">
+    <div className="flex justify-between items-center bg-white p-4">
       <div className="hidden md:flex">
           <input
             type="text"

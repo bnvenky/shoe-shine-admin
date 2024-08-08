@@ -34,7 +34,7 @@ function Dashboard() {
   }, []);
 
   return (
-    <Box sx={{ padding: 4, backgroundColor: "#f5ffd8" }} >
+    <Box  className="p-4 bg-gray-100">
       <Typography.Title level={4}>Dashboard</Typography.Title>
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={12} md={6}>

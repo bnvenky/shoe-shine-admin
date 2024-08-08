@@ -19,7 +19,7 @@ function RecentOrders() {
     <Col xs={24}>
           
         
-    <div className="w-full m-2">
+    <div className="w-full m-2 rounded-lg shadow-lg bg-slate-50 p-3">
       <Typography.Title level={4}>Recent Orders</Typography.Title>
       <Table
         columns={[

@@ -325,7 +325,8 @@ const ProductsPage = () => {
             <button className="create-btn" onClick={handleOpen}>Create new</button>
           </div>
         </div>
-        <div className="controls">
+        
+        <div className="controls bg-white p-3 rounded-md ">
           <input 
             type="search" 
             placeholder="Search" 
@@ -347,7 +348,7 @@ const ProductsPage = () => {
             </select>
           </div>
         </div>
-        <div className="product-grid">
+        <div className="product-grid  bg-white p-4 rounded-md ">
           {paginatedProducts.map(product => (
             <div className="product-card" key={product.id}>
               <img src={product.image} alt={product.name} />

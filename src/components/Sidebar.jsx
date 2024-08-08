@@ -39,18 +39,14 @@ const Sidebar = () => {
   return (
         
     
-    <div className="w-16 md:w-56 fixed left-0 top-0 z-10 h-screen border-r   bg-gray-300">
+    <div className="w-16 md:w-56 fixed left-0 top-0 z-10 h-screen boder-r pt-8 px-4 bg-white">
       {/* logo */}
-      <center>
-      <div className="fluid-contianer mb-0">
-        <img src="https://res.cloudinary.com/dhik9tnvf/image/upload/v1722311482/shoe-shine_r7qdcd.jpg" alt="logo" className="w-fit hidden md:flex" />
+      <div className="mb-8">
+        <img src="/logo.svg" alt="logo" className="w-28 hidden md:flex" />
         <img src="/logo_mini.svg" alt="logo" className="w-8 flex md:hidden" />
       </div>
-      </center>
       {/* logo */}
-    <div className="px-4">
 
-    
       {/* Navigation Links */}
       <ul className="mt-6 space-y-6">
         {SIDEBAR_LINKS.map((link, index) => (
@@ -77,10 +73,9 @@ const Sidebar = () => {
 
       <div className="w-full absolute bottom-5 left-0 px-4 py-2 cursor-pointer text-center">
         <p className="flex items-center space-x-2 text-xs text-white py-2 px-5 bg-gradient-to-r from-indigo-500 to-violet-600 rounded-full">
-          <span>?</span>
-          <span className="hidden md:flex">Need Help</span>
+          {" "}
+          <span>?</span> <span className="hidden md:flex">Need Help</span>
         </p>
-      </div>
       </div>
     </div>
     
