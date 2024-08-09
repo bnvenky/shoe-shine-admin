@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const UploadProduct = () => {
+const EditProduct = () => {
   const [formData, setFormData] = useState({
     productId: '',
     productName: '',
@@ -46,7 +46,7 @@ const UploadProduct = () => {
 
     try {
       const response = await fetch('https://mrv1.indianwelfarefoundation.org.in/product', {
-        method: 'POST',
+        method: 'PUT',
         body: formDataToSend,
       });
       const data = await response.text();
@@ -58,7 +58,7 @@ const UploadProduct = () => {
 
   return (
     <div className="m-5 font-sans">
-      <h1 className="text-center text-2xl mb-5">Upload Product</h1>
+      <h1 className="text-center text-2xl mb-5">Edit Product</h1>
       <form
         id="uploadForm"
         className="max-w-lg mx-auto p-5 border border-gray-300 rounded-lg bg-gray-100"
@@ -160,4 +160,4 @@ const UploadProduct = () => {
   );
 };
 
-export default UploadProduct;
+export default EditProduct;

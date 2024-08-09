@@ -1,9 +1,10 @@
+import ServicePage from "../components/servicesComp/ServicePage"
 
 
 const Services = () => {
   return (
     <div>
-      <h1>Services</h1>
+      <ServicePage/>
     </div>
   )
 }
