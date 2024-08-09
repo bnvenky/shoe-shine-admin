@@ -10,6 +10,7 @@ import Transactions from "./pages/Transactions";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProtectedRoute from "./ProtectedRoute";
+import OrderDetailsComponent from "./components/ordersComponent/OrderDetailsComponent";
 
 function App() {
   return (
@@ -17,11 +18,12 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        
-        <Route path="/" element={<ProtectedRoute element={<Layout />} />}>
+        {/*<ProtectedRoute element={<Layout />} /> */}
+        <Route path="/" element={<Layout/>}>
           <Route index element={<Dashboard />} />
           <Route path="products" element={<Products />} />
           <Route path="orders" element={<Orders />} />
+          <Route path="order-details/orderId" element ={ <OrderDetailsComponent/>}/>
           <Route path="transactions" element={<Transactions />} />
           <Route path="customers" element={<Customers />} />
           <Route path="services" element={<Services />} />

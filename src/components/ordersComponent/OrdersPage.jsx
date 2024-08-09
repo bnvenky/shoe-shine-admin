@@ -1,7 +1,11 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
-import './OrdersComponent.css'
+import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Add this import if using React Router
+import './OrdersComponent.css';
+
 function OrdersComponent() {
+  const navigate = useNavigate(); // Initialize navigate
+
   const mockData = {
     totalSales: 150000,
     totalOrders: 120,
@@ -14,30 +18,53 @@ function OrdersComponent() {
         price: '$150',
         status: 'Completed',
         date: '2024-08-01',
+        deliveryAddress: '123 Main St, Springfield',
+        paymentInfo: 'Master Card **** **** 4768',
+        items: [
+          { name: 'Supreme helinox chair one', quantity: 2, unitPrice: 43.50, total: 87.00, imageUrl: 'chair.jpg' },
+          { name: 'Gopro hero 7', quantity: 1, unitPrice: 43.50, total: 87.00, imageUrl: 'gopro.jpg' }
+        ]
       },
       {
         id: '002',
-        customerName: 'Jane Smith',
-        customerEmail: 'jane.smith@example.com',
-        price: '$200',
-        status: 'Pending',
-        date: '2024-08-02',
+        customerName: 'Michael',
+        customerEmail: 'john.doe@example.com',
+        price: '$150',
+        status: 'Completed',
+        date: '2024-08-01',
+        deliveryAddress: '123 Main St, Springfield',
+        paymentInfo: 'Master Card **** **** 4768',
+        items: [
+          { name: 'Supreme helinox chair one', quantity: 2, unitPrice: 43.50, total: 87.00, imageUrl: 'chair.jpg' },
+          { name: 'Gopro hero 7', quantity: 1, unitPrice: 43.50, total: 87.00, imageUrl: 'gopro.jpg' }
+        ]
       },
       {
         id: '003',
-        customerName: 'Bob Johnson',
-        customerEmail: 'bob.johnson@example.com',
-        price: '$300',
-        status: 'Cancelled',
-        date: '2024-08-03',
+        customerName: 'John Smith',
+        customerEmail: 'john.doe@example.com',
+        price: '$150',
+        status: 'Completed',
+        date: '2024-08-01',
+        deliveryAddress: '123 Main St, Springfield',
+        paymentInfo: 'Master Card **** **** 4768',
+        items: [
+          { name: 'Supreme helinox chair one', quantity: 2, unitPrice: 43.50, total: 87.00, imageUrl: 'chair.jpg' },
+          { name: 'Gopro hero 7', quantity: 1, unitPrice: 43.50, total: 87.00, imageUrl: 'gopro.jpg' }
+        ]
       },
+      // other orders...
     ],
+  };
+
+  const handleOrderClick = (orderId) => {
+    navigate(`/order-details/${orderId}`); // Navigate to OrderDetails page with orderId
   };
 
   return (
     <div className="orders-container">
-      <h1 className='text-black'>Orders Overview</h1>
-      <div className="cards-container mt-2">
+      <h2>Orders Overview</h2>
+      <div className="cards-container">
         <div className="cards">
           <h3>Total Sales</h3>
           <p>${mockData.totalSales}</p>
@@ -65,7 +92,7 @@ function OrdersComponent() {
         </thead>
         <tbody>
           {mockData.orders.map((order) => (
-            <tr key={order.id}>
+            <tr key={order.id} onClick={() => handleOrderClick(order.id)} style={{ cursor: 'pointer' }}>
               <td>{order.id}</td>
               <td>{order.customerName}</td>
               <td>{order.customerEmail}</td>
@@ -82,4 +109,4 @@ function OrdersComponent() {
   );
 }
 
-export default OrdersComponent
+export default OrdersComponent;
