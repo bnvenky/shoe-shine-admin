@@ -23,7 +23,7 @@ const ServicePage = () => {
   };
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="bg-slate-50  p-6 space-y-6">
       {/* Create New Request Button */}
       <div className="flex justify-between">
         <Button variant="contained" color="primary">Create New Request</Button>

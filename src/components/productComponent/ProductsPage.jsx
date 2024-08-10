@@ -4,7 +4,7 @@ import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
-import './ProductsPage.css';
+import './ProductsPage.css'; // Ensure this import is at the top
 import UploadProduct from './uploadProduts';
 import 'bootstrap/dist/css/bootstrap.css';
 import EditProduct from './editProduct';
@@ -27,8 +27,9 @@ const style = {
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState(['All']); // Initialize with 'All'
-  const [sortOptions, setSortOptions] = useState(['Last added', 'First added']); // Initialize with some default sort options
+  const [categories, setCategories] = useState(['All']);
+  const [sortOptions, setSortOptions] = useState(['Last added', 'First added']);
+  const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
@@ -41,11 +42,11 @@ const ProductsPage = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
+      setLoading(true);
       try {
         const response = await fetch('https://mrv1.indianwelfarefoundation.org.in/productsall');
         const data = await response.json();
 
-        // Transform the fetched data to match the component's expected format
         const transformedData = data.map(item => ({
           id: item.id,
           name: item.productName,
@@ -56,16 +57,15 @@ const ProductsPage = () => {
         }));
 
         setProducts(transformedData);
-
-        // Extract unique categories from the fetched data
         const uniqueCategories = ['All', ...new Set(data.map(item => item.productCategory))];
         setCategories(uniqueCategories);
 
-        // Dynamically determine sort options based on product fields
         const dynamicSortOptions = ['Last added', 'First added', 'Price: High to Low', 'Price: Low to High', 'Name: A to Z', 'Name: Z to A'];
         setSortOptions(dynamicSortOptions);
       } catch (error) {
         console.error('Error fetching products:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -151,11 +151,11 @@ const ProductsPage = () => {
 
   return (
     <>
-      <div className='p-6 w-full bg-gray-100'>
+      <div className='p-6 w-full h-full bg-gray-100'>
         <div className="header">
           <h1>Products grid</h1>
           <div className="header-buttons">
-            <button className="export-btn">Export</button>
+            {/*<button className="export-btn">Export</button>*/}
             <button className="create-btn" onClick={handleOpen}>Create new</button>
           </div>
         </div>
@@ -181,7 +181,12 @@ const ProductsPage = () => {
           </div>
         </div>
         <div className="product-grid bg-white p-4 rounded-md">
-          {paginatedProducts.map(product => (
+          {loading ? (
+            <div className="loading">
+              <div className="loader"></div>
+            </div>
+          ) : paginatedProducts.length > 0 ?(
+          paginatedProducts.map(product => (
             <div className="product-card" key={product.id}>
               <img src={product.image} alt={product.name} />
               <h3>{product.name}</h3>
@@ -201,7 +206,10 @@ const ProductsPage = () => {
                 </button>
               </div>
             </div>
-          ))}
+          ))): (
+            <div className="no-products">No products available</div> // Show no products message
+          )
+          }
         </div>
         <div className="pagination p-3 ">
           <button onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))} disabled={currentPage === 1}>

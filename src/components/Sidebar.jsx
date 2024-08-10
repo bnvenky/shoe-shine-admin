@@ -42,8 +42,8 @@ const Sidebar = () => {
     <div className="w-16 md:w-56 fixed left-0 top-0 z-10 h-screen boder-r pt-8 px-4 bg-white">
       {/* logo */}
       <div className="mb-8">
-        <img src="/logo.svg" alt="logo" className="w-28 hidden md:flex" />
-        <img src="/logo_mini.svg" alt="logo" className="w-8 flex md:hidden" />
+        <img src="https://res.cloudinary.com/dhik9tnvf/image/upload/v1723259223/Design_1_quarmy.png" alt="logo" className="w-fit hidden md:flex" />
+        <img src="https://res.cloudinary.com/dhik9tnvf/image/upload/v1723259580/Design_s_sow4mv.png" alt="logo" className="w-fit flex md:hidden" />
       </div>
       {/* logo */}
 

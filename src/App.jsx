@@ -23,7 +23,7 @@ function App() {
           <Route index element={<Dashboard />} />
           <Route path="products" element={<Products />} />
           <Route path="orders" element={<Orders />} />
-          <Route path="order-details/orderId" element ={ <OrderDetailsComponent/>}/>
+          <Route path="order-details/:orderId" element ={ <OrderDetailsComponent/>}/>
           <Route path="transactions" element={<Transactions />} />
           <Route path="customers" element={<Customers />} />
           <Route path="services" element={<Services />} />
