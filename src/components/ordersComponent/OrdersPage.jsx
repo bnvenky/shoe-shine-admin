@@ -1,64 +1,31 @@
-/* eslint-disable no-unused-vars */
-import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Add this import if using React Router
+
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './OrdersComponent.css';
 
 function OrdersComponent() {
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate();
+  const [orders, setOrders] = useState([]);
+  const [totalSales, setTotalSales] = useState(0);
+  const [totalOrders, setTotalOrders] = useState(0);
 
-  const mockData = {
-    totalSales: 150000,
-    totalOrders: 120,
-    totalProducts: 350,
-    orders: [
-      {
-        id: '001',
-        customerName: 'John Doe',
-        customerEmail: 'john.doe@example.com',
-        price: '$150',
-        status: 'Completed',
-        date: '2024-08-01',
-        deliveryAddress: '123 Main St, Springfield',
-        paymentInfo: 'Master Card **** **** 4768',
-        items: [
-          { name: 'Supreme helinox chair one', quantity: 2, unitPrice: 43.50, total: 87.00, imageUrl: 'chair.jpg' },
-          { name: 'Gopro hero 7', quantity: 1, unitPrice: 43.50, total: 87.00, imageUrl: 'gopro.jpg' }
-        ]
-      },
-      {
-        id: '002',
-        customerName: 'Michael',
-        customerEmail: 'john.doe@example.com',
-        price: '$150',
-        status: 'Completed',
-        date: '2024-08-01',
-        deliveryAddress: '123 Main St, Springfield',
-        paymentInfo: 'Master Card **** **** 4768',
-        items: [
-          { name: 'Supreme helinox chair one', quantity: 2, unitPrice: 43.50, total: 87.00, imageUrl: 'chair.jpg' },
-          { name: 'Gopro hero 7', quantity: 1, unitPrice: 43.50, total: 87.00, imageUrl: 'gopro.jpg' }
-        ]
-      },
-      {
-        id: '003',
-        customerName: 'John Smith',
-        customerEmail: 'john.doe@example.com',
-        price: '$150',
-        status: 'Completed',
-        date: '2024-08-01',
-        deliveryAddress: '123 Main St, Springfield',
-        paymentInfo: 'Master Card **** **** 4768',
-        items: [
-          { name: 'Supreme helinox chair one', quantity: 2, unitPrice: 43.50, total: 87.00, imageUrl: 'chair.jpg' },
-          { name: 'Gopro hero 7', quantity: 1, unitPrice: 43.50, total: 87.00, imageUrl: 'gopro.jpg' }
-        ]
-      },
-      // other orders...
-    ],
-  };
+  useEffect(() => {
+    // Fetch the data from the API
+    fetch('https://mrv1.indianwelfarefoundation.org.in/ordersall')
+      .then(response => response.json())
+      .then(data => {
+        setOrders(data);
+
+        // Calculate total sales and total orders
+        const totalSales = data.reduce((acc, order) => acc + parseFloat(order.productPrice), 0);
+        setTotalSales(totalSales);
+        setTotalOrders(data.length);
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
 
   const handleOrderClick = (orderId) => {
-    navigate(`/order-details/${orderId}`); // Navigate to OrderDetails page with orderId
+    navigate(`/order-details/${orderId}`);
   };
 
   return (
@@ -67,15 +34,11 @@ function OrdersComponent() {
       <div className="cards-container">
         <div className="cards">
           <h3>Total Sales</h3>
-          <p>${mockData.totalSales}</p>
+          <p>${totalSales}</p>
         </div>
         <div className="cards">
           <h3>Total Orders</h3>
-          <p>{mockData.totalOrders}</p>
-        </div>
-        <div className="cards">
-          <h3>Total Products</h3>
-          <p>{mockData.totalProducts}</p>
+          <p>{totalOrders}</p>
         </div>
       </div>
 
@@ -91,16 +54,16 @@ function OrdersComponent() {
           </tr>
         </thead>
         <tbody>
-          {mockData.orders.map((order) => (
-            <tr key={order.id} onClick={() => handleOrderClick(order.id)} style={{ cursor: 'pointer' }}>
-              <td>{order.id}</td>
-              <td>{order.customerName}</td>
-              <td>{order.customerEmail}</td>
-              <td>{order.price}</td>
-              <td className={`status ${order.status.toLowerCase()}`}>
-                {order.status}
+          {orders.map((order) => (
+            <tr key={order.orderId} onClick={() => handleOrderClick(order.orderId)} style={{ cursor: 'pointer' }}>
+              <td>{order.orderId}</td>
+              <td>{JSON.parse(order.address).fullName}</td>
+              <td>{JSON.parse(order.address).email || "N/A"}</td> {/* Assuming email is part of address */}
+              <td>${order.productPrice}</td>
+              <td className={`status ${order.deliveryDate ? 'completed' : 'pending'}`}>
+                {order.deliveryDate ? 'Completed' : 'Pending'}
               </td>
-              <td>{order.date}</td>
+              <td>{new Date(order.orderDate).toLocaleDateString()}</td>
             </tr>
           ))}
         </tbody>
