@@ -4,13 +4,13 @@ import Layout from "./components/Layout";
 import Dashboard from "./pages/Dashboard";
 import Products from "./pages/Products";
 import Services from "./pages/Services";
-import Customers from "./pages/Customers";
 import Orders from "./pages/Orders";
 import Transactions from "./pages/Transactions";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProtectedRoute from "./ProtectedRoute";
 import OrderDetailsComponent from "./components/ordersComponent/OrderDetailsComponent";
+import Users from "./pages/Users";
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
           <Route path="orders" element={<Orders />} />
           <Route path="order-details/:orderId" element ={ <OrderDetailsComponent/>}/>
           <Route path="transactions" element={<Transactions />} />
-          <Route path="customers" element={<Customers />} />
+          <Route path="users" element={<Users />} />
           <Route path="services" element={<Services />} />
         </Route>
       </Routes>

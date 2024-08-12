@@ -21,7 +21,7 @@ const Sidebar = () => {
     { id: 2, path: "/products", name: "Products", icon: AiOutlineProduct },
     { id: 3, path: "/orders", name: "Orders", icon: FaOpencart },
     { id: 4, path: "/transactions", name: "Transactions", icon: GrTransaction },
-    { id: 5, path: "/customers", name: "Customers", icon: AiOutlineCustomerService },
+    { id: 5, path: "/users", name: "Users", icon: AiOutlineCustomerService },
     { id: 6, path: "/services", name: "Services", icon: MdOutlineMiscellaneousServices },
     { id: 7, path: "/messages", name: "Messages", icon: LuMessageSquare },
   ];
